@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public float VerticalMove;
 
     public Rigidbody2D rb;
-    private Vector2 _jumpForce = new Vector2(0, 700);
+    private Vector2 _jumpForce = new Vector2(0, 600);
     private Lever _lever;
 
 
@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
         Block block = collision.gameObject.GetComponent<Block>();
         if (block)
         {
-            if(rb.velocity.y <= 0 && block.transform.position.y < transform.position.y)
+            if(block.transform.position.y <= transform.position.y)
                 _onGround = true;
         }
     }
@@ -63,7 +63,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-
+        if  (rb.velocity.y < -0.05)
+            _onGround = false;
         if (Input.GetKey(KeyCode.W))
         {
             if (_onGround) rb.AddForce(_jumpForce);
