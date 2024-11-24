@@ -1,6 +1,5 @@
 using Game;
 using UnityEngine;
-using UnityEngine.Animations;
 
 public class Player : MonoBehaviour
 {
@@ -11,18 +10,15 @@ public class Player : MonoBehaviour
     public float Speed;
     public float RotationSpeed;
     public bool Comebacking = false;
-    public int HP;
     private bool _onGround = true;
 
     public float HorizontalMove;
     public float VerticalMove;
 
     public Rigidbody2D rb;
-    private Vector2 _jumpForce = new Vector2(0, 600);
+    private Vector2 _jumpForce = new Vector2(0, 800);
     private Lever _lever;
 
-
-    private float z = 0;
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
