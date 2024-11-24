@@ -1,9 +1,12 @@
 using Game;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private AZone _triggerZone;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private SpriteRenderer _sprite;
 
     public float Speed;
     public float RotationSpeed;
@@ -38,8 +41,12 @@ public class Player : MonoBehaviour
         Block block = collision.gameObject.GetComponent<Block>();
         if (block)
         {
-            if(block.transform.position.y <= transform.position.y)
+            if (block.transform.position.y <= transform.position.y)
+            {
+                _animator.SetBool("JUMP", false);
+
                 _onGround = true;
+            }
         }
     }
     private void BindOnEnter(Collider2D arg0)
@@ -63,20 +70,34 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if  (rb.velocity.y < -0.05)
+        if (rb.velocity.y < -0.05)
+        {
+            _animator.SetBool("JUMP", true);
+
             _onGround = false;
+        }
         if (Input.GetKey(KeyCode.W))
         {
             if (_onGround) rb.AddForce(_jumpForce);
+            _animator.SetBool("JUMP", true);
             _onGround = false;
         }
         HorizontalMove = Input.GetAxis("Horizontal");
-        
         transform.position += transform.right *HorizontalMove * Speed * Time.deltaTime;
         
+        if (HorizontalMove > 0){
+            _animator.SetBool("RUN", true) ;
+            _sprite.flipX = false;
+        }
+        if (HorizontalMove < 0){
+            _animator.SetBool("RUN", true);
+            _sprite.flipX = true;
+        }
+        if (HorizontalMove == 0)
+        {
+            _animator.SetBool("RUN", false);
+        }
 
-      
-      
 
         if (Input.GetButtonDown("e"))
         {

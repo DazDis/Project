@@ -224,6 +224,11 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!212 &868703727 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 613652388356917476, guid: a6f2edaec602a8241b569f1f5e87ad65, type: 3}
+  m_PrefabInstance: {fileID: 1814803172}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1013677660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -612,6 +617,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 613652388356917476, guid: a6f2edaec602a8241b569f1f5e87ad65, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 613652388356917476, guid: a6f2edaec602a8241b569f1f5e87ad65, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5382678630027542210, guid: a6f2edaec602a8241b569f1f5e87ad65, type: 3}
       propertyPath: m_Name
       value: Player
@@ -664,6 +677,10 @@ PrefabInstance:
       propertyPath: Speed
       value: 3.15
       objectReference: {fileID: 0}
+    - target: {fileID: 8921218081471850504, guid: a6f2edaec602a8241b569f1f5e87ad65, type: 3}
+      propertyPath: _sprite
+      value: 
+      objectReference: {fileID: 868703727}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
